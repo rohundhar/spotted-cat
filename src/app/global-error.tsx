@@ -2,10 +2,7 @@
 
 import NextError from 'next/error';
 
-export default function GlobalError(props: {
-  error: Error & { digest?: string };
-  params: { locale: string };
-}) {
+export default function GlobalError() {
 
   return (
     <html lang='en'>

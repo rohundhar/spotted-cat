@@ -1,5 +1,5 @@
 
-const Index = (props: { params: { locale: string } }) => {
+const Index = () => {
 
   return (
     <>
