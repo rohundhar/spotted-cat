@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Safari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .safari-bg {
+            background-image: url('https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .btn-3d {
+            transition: all 0.2s ease;
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+        }
+        .btn-3d:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #3f4499, #7a7fe9);
+        }
+        .btn-3d:active {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .shadow-text {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="safari-bg h-screen flex items-center justify-center">
+    <div class="text-center">
+        <h1 class="text-6xl font-bold text-white mb-8 shadow-text">Welcome to the Safari</h1>
+        <a href="home.html" class="btn-3d text-white font-bold py-4 px-12 rounded-lg text-xl inline-block shadow-lg border-2 border-white w-64">
+            Get Started
+        </a>
+    </div>
+</body>
+</html>

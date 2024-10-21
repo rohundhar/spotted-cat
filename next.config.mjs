@@ -22,6 +22,15 @@ export default withSentryConfig(
     },
     poweredByHeader: false,
     reactStrictMode: true,
+    images: {
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'images.unsplash.com',
+          port: '',
+        }
+      ]
+    },
     experimental: {
       serverComponentsExternalPackages: ['@electric-sql/pglite'],
     },
