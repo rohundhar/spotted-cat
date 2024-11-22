@@ -1,8 +1,8 @@
-import type { Media } from "./Media";
 
 export interface Folder {
+  _id: string;
   userId: string;
   name: string;
   color: string;
-  files: Media[];
+  files: string[]; // Media ID
 }

@@ -25,10 +25,9 @@ export const FolderActions = (): JSX.Element => {
   return <>
 	<Dialog open={open} onOpenChange={setOpen}>
     <DialogTrigger>
-      <Button>
-      Add New Folder
-
-      </Button>
+      {/* <Button> */}
+        Add New Folder
+      {/* </Button> */}
       </DialogTrigger>
     <DialogContent>
       <DialogHeader>

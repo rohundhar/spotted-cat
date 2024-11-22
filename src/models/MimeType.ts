@@ -5,3 +5,7 @@ export enum MimeType {
   HEIC = 'image/heif',
   PNG = 'image/png'
 }
+
+export const VideoTypes = [MimeType.QUICKTIME, MimeType.MP4];
+
+export const ImageTypes = [MimeType.HEIC, MimeType.JPG, MimeType.PNG];

@@ -37,7 +37,7 @@
     "incremental": true,
 
     // Load types
-    "types": ["vitest/globals"],
+    // "types": ["types/global"],
 
     // Path aliases
     "baseUrl": ".",
@@ -65,6 +65,7 @@
     "**/*.tsx",
     ".storybook/*.ts",
     ".next/types/**/*.ts",
+    "**/*.d.ts",
     "**/*.mts"
   ]
 }

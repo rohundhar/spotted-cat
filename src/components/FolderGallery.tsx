@@ -3,6 +3,7 @@ import { useFileService } from "@/providers/FileServiceProvider";
 
 interface FolderItemProps {
   folder: Folder;
+  onSelect?: (folder: Folder) => void
 }
 
 
@@ -16,16 +17,23 @@ export const FolderGallery = (): JSX.Element => {
 }
 
 
-const FolderItem = (props: FolderItemProps): JSX.Element => {
+export const FolderItem = (props: FolderItemProps): JSX.Element => {
 
-  const { folder: { name, files, color } } = props;
+  const { folder: { name, files, color }, onSelect } = props;
   const { selectedMedia, addSelectedMediaToFolder } = useFileService();
 
-  const noMediaSelected =  Object.values(selectedMedia).filter(val => val === true).length === 0;
+  const noMediaSelected =  selectedMedia.size === 0;
 
+  const handleClickFolder = () => {
+    if (onSelect) {
+      onSelect(props.folder)
+    }
+  }
 
   return <>
-      <div style={{
+     <div
+        onClick={handleClickFolder} 
+        style={{
         backgroundColor: color
       }} className={`p-2 rounded-md flex justify-between items-center `}>
         <span>{name} ({files.length})</span>
