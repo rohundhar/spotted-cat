@@ -21,6 +21,8 @@ import { getContentUrl } from "@/providers/helper";
 import { ImageTypes, VideoTypes } from "@/models/MimeType";
 
 
+const NO_ACTION = false;
+
 const ImageItem = memo((props: Media & { 
   handleSelect: (id: string, selected:boolean) => void, 
   handleClickImage: () => void,
@@ -30,7 +32,7 @@ const ImageItem = memo((props: Media & {
 
 
 
-  const { _id , webContentLink, gDriveId, thumbnailLink, handleSelect, handleClickImage, style, selected } = props;
+  const { _id , webContentLink, gDriveId, thumbnailLink, handleSelect, handleClickImage, style, selected, mimeType } = props;
 
 
   const [testSelected, onTestSelected] = useState(false);
@@ -39,26 +41,29 @@ const ImageItem = memo((props: Media & {
 
   const folderTags = useMemo(() => mediaToFolderTags[_id], [mediaToFolderTags, _id]);
 
-  const handleImageClick = () => {
-    // handleSelect(_id, !selected)
-    onTestSelected(!testSelected);
+  const handleSelectionClick = () => {
+    if (NO_ACTION) {
+      console.log('handle selection')
+    } else {
+        handleSelect(_id, !selected);
+        onTestSelected(!testSelected);
+    }
   };
 
-  // console.log(webContentLink);
   return <>
         <div 
-        className={`bg-white rounded-lg h-[160px] shadow-md w-full ${testSelected ? 'border-[1px] border-black' : ''}`} // Visual feedback for selection
-        onClick={handleClickImage}
+        className={`bg-white rounded-lg h-[160px] shadow-md w-full border-[1px] ${ImageTypes.includes(mimeType) ? 'border-green-300' : 'border-red-300'} ${testSelected ? '' : 'border-black'}`} // Visual feedback for selection
         style={style}
         >
           <Image 
             width={300}
             height={300}
-            className='w-full h-[85%] object-cover cursor-pointer thumbnail'
+            className='w-full h-[85%] object-cover cursor-pointer thumbnail rounded-t-lg'
             src={thumbnailLink}
+            onClick={handleClickImage}
             alt={`test-${gDriveId}`}
           />
-          <div onClick={handleImageClick} className={`flex-row flex`}>
+          <div onClick={handleSelectionClick} className={`flex-row flex`}>
             <Checkbox className={`m-1`} checked={testSelected} />
             <div className={`color-dots items-center`}>
               {folderTags && folderTags.length > 0 ? <>
@@ -146,8 +151,12 @@ const FullImageGallery = () => {
   }, [currentMedia]);
 
   const handleImageClick = (index: number) => {
-    setLightboxOpen(true);
-    setLightboxIndex(index);
+    if (NO_ACTION) {
+      console.log('open lightbox');
+    } else {
+      setLightboxOpen(true);
+      setLightboxIndex(index);
+    }
   };
 
   const handlePageChange = (page: number) => {

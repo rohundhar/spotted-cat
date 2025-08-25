@@ -321,9 +321,13 @@ const putInCache = async (request, response) => {
   if (request.method !== 'GET') {
     console.log('Cannot cache non-GET requests');
     return;
+  } else if (request.method === 'GET' && request.url.includes('/api/proxy')) {
+    console.log('INCLUDES PROXY');
+    await cache.put(request, response);
+  } else {
+    return;
   }
 
-  await cache.put(request, response);
 };
 
 self.addEventListener('activate', (event) => {

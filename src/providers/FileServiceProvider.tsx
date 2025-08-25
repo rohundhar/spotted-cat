@@ -91,6 +91,7 @@ export const FileServiceProvider: React.FC<FileServiceProviderProps> = ({  child
     const response = await fetchAllUserFolders(token);
     if (response.success) {
       setFolders(response.data.results)
+      console.log('Folders', response.data.results);
     }
   }, [clerkUser]);
 
